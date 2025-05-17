@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanderlust Diaries | Protected Travel Blog</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header,
+    nav,
+    main,
+    footer {
+      display: none;
+    }
+
+    #auth-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .welcome-message {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #423939;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .sub-message {
+      color: #423939;
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .auth-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+      transition: opacity 0.5s ease;
+      opacity: 1;
+    }
+
+    .auth-card.hidden {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .auth-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+
+    label {
+      display: block;
+      margin: 0.75rem 0 0.25rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      border-color: #34495e;
+      outline: none;
+    }
+
+    button {
+      background-color: #34495e;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #2c3e50;
+    }
+
+    .toggle-auth {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .toggle-auth a {
+      color: #2980b9;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .toggle-auth a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #34495e;
+      color: #fff;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #2c3e50;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #f7f7f7;
+    }
+
+    article {
+      background-color: white;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #34495e;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- AUTH SECTION -->
+  <div id="auth-wrapper">
+    <div class="welcome-message">WELCOME TO WANDERLUST DIARIES</div>
+    <div class="sub-message">Start your journey with us. Your passport to discovering the world’s most captivating destinations begins here. Sign up to unlock exclusive travel stories, tips, and guides.</div>
+
+    <form id="signup-form" class="auth-card">
+      <h2>Create Account</h2>
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" placeholder="you@example.com" required />
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" placeholder="Minimum 8 characters" required />
+      <button type="submit">Sign Up</button>
+      <div class="toggle-auth">Already have an account? <a id="switch-to-login">Log in</a></div>
+    </form>
+
+    <form id="login-form" class="auth-card hidden" style="display: none;">
+      <h2>Login</h2>
+      <label for="login-email">Email</label>
+      <input type="text" id="login-email" placeholder="you@example.com" required />
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Enter your password" required />
+      <button type="submit">Login</button>
+      <div class="toggle-auth">Don't have an account? <a id="switch-to-signup">Sign up</a></div>
+    </form>
+  </div>
+
+  <!-- PROTECTED CONTENT -->
+  <header>
+    <h1>Wanderlust Diaries</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="destinationparis.html">Destinations</a></li>
+      <li><a href="travel-tips.html">Travel Tips</a></li>
+      <li><a href="popular attraction.html">Popular Attractions</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contacts.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Latest Travel Stories</h2>
+    <article>
+      <h3><a href="bali.html">Exploring the Beaches of Bali</a></h3>
+      <p>Discover the beauty of Bali’s serene beaches and cultural landmarks.</p>
+    </article>
+    <article>
+      <h3><a href="backpacking in europe.html">A Guide to Backpacking in Europe</a></h3>
+      <p>Everything you need to know for an unforgettable backpacking trip.</p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Wanderlust Diaries. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let storedEmail = "";
+    let storedPassword = "";
+
+    const signupForm = document.getElementById("signup-form");
+    const loginForm = document.getElementById("login-form");
+    const authWrapper = document.getElementById("auth-wrapper");
+
+    signupForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("signup-email").value.trim();
+      const password = document.getElementById("signup-password").value;
+
+      if (!email || password.length < 8) {
+        alert("Please enter a valid email and password (min 8 characters).");
+        return;
+      }
+
+      storedEmail = email;
+      storedPassword = password;
+
+      signupForm.classList.add("hidden");
+
+      setTimeout(() => {
+        signupForm.style.display = "none";
+        loginForm.style.display = "block";
+        loginForm.classList.remove("hidden");
+        alert("Account created! Please log in.");
+      }, 600);
+    });
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
+
+      if (email === storedEmail && password === storedPassword) {
+        alert("Login successful!");
+        authWrapper.style.display = "none";
+
+        document.querySelector("header").style.display = "block";
+        document.querySelector("nav").style.display = "block";
+        document.querySelector("main").style.display = "block";
+        document.querySelector("footer").style.display = "block";
+        document.body.style.background = "#f7f7f7";
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    });
+
+    document.getElementById("switch-to-login").onclick = () => {
+      signupForm.classList.add("hidden");
+      setTimeout(() => {
+        signupForm.style.display = "none";
+        loginForm.style.display = "block";
+        loginForm.classList.remove("hidden");
+      }, 500);
+    };
+
+    document.getElementById("switch-to-signup").onclick = () => {
+      loginForm.classList.add("hidden");
+      setTimeout(() => {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block";
+        signupForm.classList.remove("hidden");
+      }, 500);
+    };
+  </script>
+</body>
+
+</html>
